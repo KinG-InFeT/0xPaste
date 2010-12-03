@@ -1,0 +1,23 @@
+ITA
+
+Per effettuare l'upgrade è molto semplice, basta seguire questi semplici passi:
+
+1) Cancellare tutti i file dalla vostra root di 0xPaste rimanendo però il file config.php
+2) Uppare tutti i file del nuovo 0xPaste v2.0 - Beta tranne che config.php ed install.php
+3) Uppare il file per l'upgrade che trovate nel pacchetto scaricato di 0xPaste v2.0 - Beta chiamato upgrade_1_6_5_to_2_0_x.php, 
+	nella directory che si trova il file config.php
+4) Avviare l'upgrade facendo partire il file upgrade_1_6_5_to_2_0_x.php
+5) Inserite le piccole richieste che vi da l'Upgrade
+6) Il vostro 0xPaste è aggiornato all'ultima versione disponibile :D
+
+ENG
+
+To upgrade is very simple, just follow these simple steps:
+
+1) Delete all files from the root of your 0xPaste but remained config.php
+2) upload all files in the new 0xPaste v2.0 - Beta except config.php and install.php
+3) upload the file to upgrade to that found in the downloaded package 0xPaste v2.0 - Beta upgrade_1_6_5_to_2_0_x.php called,
+the directory is the file config.php
+4) Start the upgrade by starting the file upgrade_1_6_5_to_2_0_x.php
+5) Place small applications that give you the upgrade
+6) Your 0xPaste is updated to the latest available version: D

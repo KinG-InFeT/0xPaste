@@ -1,0 +1,133 @@
+/*
+ * 
+ * @project 0xPaste
+ * @author KinG-InFeT
+ * @licence GNU/GPL
+ *
+ * @file style.css
+ *
+ * @link http://0xproject.hellospace.net#0xPaste
+ *
+ */
+ 
+/* CSS CMS 0xPaste */
+body {
+	background-color: #666666;
+	color: white;
+	font-family: monospace;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #E4E4E4;
+	text-decoration: underline;
+}
+
+
+textarea {
+	background-color:#242424;
+	color:#FFFFFF;
+	border-style: solid;
+	border-color: #4B4B4B;
+	padding:2pt;
+}
+
+select {
+	background-color:#242424;
+	color:#FFFFFF;
+	border-style: solid;
+	border-color: #4B4B4B;
+}
+
+input {
+	background-color:#242424;
+	color:#FFFFFF;
+	border: 1px;
+	border-style: solid;
+	border-color: #4B4B4B;
+}
+
+input:focus {
+	background-color:#242424;
+	color:#FFFFFF;
+	border: 1px;
+	border-style: solid;
+	border-color: lime;
+}
+
+table {
+	color: #fff;
+	border:2px dotted #333;
+}
+
+tr {
+    color: #fff;
+    border:1px dotted #333;
+}
+
+#error {
+	width: 50%;
+	color: gray;
+	padding: 12px;
+	border: 1px dotted red;
+	text-align: center;
+}
+
+#code_box {
+	padding:7px;
+	color: black;
+	margin:10px;
+	background-color:#FFFFEF;
+	border:1px dotted #DDDDAA;
+}
+
+#embed {
+	font-size:0.8em;
+	padding:7px;
+	line-height:24px;
+	border:1px dotted #000000;
+}
+
+/* CSS of Admin Menu */
+.bg {background: url(img/button4.gif);}
+.menu {padding:0 0 0 32px; margin:0; list-style:none; height:40px; background:#fff url(img/button1a.gif) repeat-x; position:relative; font-family:arial, verdana, sans-serif; }
+.menu li.top {display:block; float:left; position:relative;}
+.menu li a.top_link {display:block; float:left; height:40px; line-height:33px; color:#bbb; text-decoration:none; font-size:11px; font-weight:bold; padding:0 0 0 12px; cursor:pointer;}
+.menu li a.top_link span {float:left; font-weight:bold; display:block; padding:0 24px 0 12px; height:40px;}
+.menu li a.top_link span.down {float:left; display:block; padding:0 24px 0 12px; height:40px; background:url(img/down.gif) no-repeat right top;}
+.menu li a.top_link:hover {color:#000; background: url(img/button4.gif) no-repeat;}
+.menu li a.top_link:hover span {background:url(img/button4.gif) no-repeat right top;}
+.menu li a.top_link:hover span.down {background:url(img/button4a.gif) no-repeat right top;}
+
+.menu li:hover > a.top_link {color:#000; background: url(img/button4.gif) no-repeat;}
+.menu li:hover > a.top_link span {background:url(img/button4.gif) no-repeat right top;}
+.menu li:hover > a.top_link span.down {background:url(img/button4a.gif) no-repeat right top;}
+
+.menu table {border-collapse:collapse; width:0; height:0; position:absolute; top:0; left:0;}
+
+.menu a:hover {visibility:visible;}
+.menu li:hover {position:relative; z-index:200;}
+
+.menu ul, 
+.menu :hover ul ul, 
+.menu :hover ul :hover ul ul,
+.menu :hover ul :hover ul :hover ul ul,
+.menu :hover ul :hover ul :hover ul :hover ul ul {position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+.menu :hover ul.sub {left:2px; top:40px; right:2px; background: #fff; padding:3px 0; border:1px solid #999999; white-space:nowrap; width:200px; height:auto;}
+.menu :hover ul.sub li {display:block; height:20px; position:relative; float:left; width:250px;}
+.menu :hover ul.sub li a {font-weight:normal;display:block; font-size:11px; height:20px; width:192px; line-height:20px; text-indent:5px; color:#000; text-decoration:none; border:3px solid #fff; border-width:0 0 0 3px;}
+.menu :hover ul.sub li a.fly {background:#fff url(img/arrow.gif) 80px 7px no-repeat;}
+.menu :hover ul.sub li a:hover {background:#999999; color:#fff;}
+.menu :hover ul.sub li a.fly:hover {background:#999999 url(img/arrow_over.gif) 80px 7px no-repeat; color:#fff;}
+.menu :hover ul li:hover > a.fly {background:#999999 url(img/arrow_over.gif) 80px 7px no-repeat; color:#fff;} 
+
+.menu :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul :hover ul :hover ul
+{left:90px; top:-4px; background: #fff; padding:3px 0; border:1px solid 999999; white-space:nowrap; width:93px; z-index:200; height:auto;}

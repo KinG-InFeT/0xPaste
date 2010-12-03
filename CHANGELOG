@@ -1,0 +1,120 @@
+							_ CHANGELOG _
+							
+v2.0 - Beta (First OOP Released)
+	[+] Tutta la configurazione passata in MySQL
+	[+] Installazione completamente rinnovata e semplificata
+	[+] Aggiornato Geshi alla versione 1.0.8.9
+		[+] Adesso i linguaggi sono 191 tutti aggiunti a mano e con i relativi nomi esatti :D
+		[+] Inserita serie di linguaggi di default che vengono visualizzati prima di tutti gli altri
+	[+] Cambiata la generazione dell'ID ora con time() e rand()
+	[+] Migliorato notevolmente in captcha
+	[+] Fix Full Path Disclosure in core.class.php $line variable
+	[+] Aggiunta Possibilità di visualizzare il source in modalità RAW
+	[+] Aggiunta funzione di EMBEDDED per il linkaggio da altri web blog o Siti web
+	[+] Possibilità di visualizzare tutti i sorgenti di tutti i linguaggi pastati :D ( Thanks DoMiNo )
+		[+] Possibilità di rendere i sorgenti Privati e non farli visualizzare :P
+	[+] Footer Moddato
+	[+] Creato nuovo menu in CSS completamente personalizzabile (Spacca :D)
+	[+] Amministrazione completamente rinnovata
+		[+] Aggiunta la possibilità di cambiare la propria password per l'accesso all'amministrazione
+		[+] Aggiunta la possibilità di controllare gli aggiornamenti per il CMS
+		[+] Aggiunt apossibilità di cambiare titolo al CMS
+		[+] Possibilità di editare i CSS del tema direttamente dall'amministrazione (Thanks CSS Menu Maker.com)
+		[+] Login completamente rinnovato e basato sui cookie
+	[+] Cancellazione immediata
+	[+] Editazione immediata
+	[+] Visualizzazione immediata
+
+##################################################################################################################
+v1.6.5 (BugFix Release)
+	[+] Fixed CSRF/XSS in to index.php and admin.php [HOT] (Thanks Hacker97)
+	[+] Sistemata l'intera identazione
+	[+] Upgrade GeSHI Version to 1.0.8.9
+	[+] Aggiunto controllo se il file install.php esiste allora eseguire installazione :P
+	[+] Sistemata la pagina index.php :P
+	[+] Fixed $_SESSION ByPass [HOT] (Thanks hacku)
+	[+] Fix inserimento codice in texarea eliminando stripslashes() ;)
+	[+] Piccola sistemata al file admin.php :P
+	[+] Aggiunto redirect in edit.php durante l'eliminazione deipaste :P
+	[-] Eliminata funziona del_id() integrata in delete_sources() nello switch()
+	[+] Revisionato completamente l'intero CMS
+	[+] Creazione di un core.php (Alpha Version per ora solo la versione contiene :P)
+	[+] Alcuni accorgimenti al file install.phpe  alla funzione delete_install
+	
+v1.6
+	[+] Alcune modifiche all'installer
+	[+] Sistemati i problemi inerenti agli slash (Thanks Blackc0de)
+	[+] Sistemato il footer
+	[+] Aggiunta la possibilità di inserire un'ID di un source e di andare ad editare o cancellare direttamente
+	[+] Fixato XSS in index.php (Importanza: Bassa)
+	[+] Fixata la falla di tipo HTML Injection  e XSSED in edit.php :P (Importanza: Alta)
+	[+] Sistemata un pò la sintassi
+						
+v1.5.1
+	[+] Sistamata un pò la grafica nell'installazione
+	[+] Sistemata la cancellazione del file install.php ora integrato nell'install.php
+		[+] Eliminato il file delete_install.php
+	[+] Eliminato fastidioso aler durante il login in amministrazione :P
+	[+] Integrato il logout nella index.php in ./admin
+		[+] Eliminato il file logout.php in ./admin
+	[+] Fixed SQL Injection in index.php $_POST['language'] (thanks the:paradox )
+	[+] Fixato il problema su altervista degli slash ;) (thanks BlackC0de)
+	[+] Aumentato il range del random di 100 volte :P
+	[+] Fixato generazione html per titolo ed autore che non stampava appena arrivava ad uno spazio
+						
+v1.5							
+	[+] Revisione del Login in amministrazione
+	[+] Fixato errore nell'installazione (non convertiva la password in md5 )
+	[+] Revisione al file install.php
+	[+] Fixed problema nella cancellazione dei pasting tramite index.php
+						
+v1.4
+	[+] Sistemata notevolmente l'installazione (file install.php)
+	[+] Revisionato il file delete_install.php
+	[+] Aggiunto nome sito nella index.php
+	[+] Aggiunta possibilità di editare o cancellare i source direttamente dalla pagina view (solo se si è loggati come admin)
+	[+] Notevolmente migliorato il codice nella index.php
+	[+] Revisionata l'intera amministrazione completamente riscritta adesso utilizzo le sessioni in PHP
+	[+] Sistemata un pò digrafica
+	[+] Aggiustato il Logout
+	[+] Fixata la generazione dell'HTML ora va molto meglio
+	[+] Aggiunto un captcha
+	[+] password per login in config.php criptata in MD5 per maggiore sicurezza
+	[+] Fixato redirect dopo l'editing di un source dall'amministrazione
+	[+] Fixed 2 XSS in edit dopo il cambiamento del sistema index.php ;)
+	[+] FIXED PAGINA PER L'EDITAZIONE ADESSO FUNZIONA ALLA GRANDE
+		[+] FIXED PROBLEMA PER QUANTO RIGUARDA I \n NELL'EDITING DEL SORGENTE
+	[+] Miglioramente totale per il codice scritto
+	
+v1.3 Stable (Add)
+	[+] Aggiunta in amministrazione l' IP dell'utente che ha postato.(melo avevano chiesto in molti :P)
+	[+] Creazione file install.php
+	[+] Inserimento controllo per l'installazione in index.php
+	[+] Fixed XSS in edit.php (ma non finiscono mai? asd)
+	[+] Sistemato il file install.php
+	[+] Aggiunta opzione in amministrazione di poter cancellare tutti i source inseriti ;)
+	[+] Aggiunto logout
+
+v1.2 Pre-Stable Release (Bug-Fix+ Add)
+	[+] Fixed Permanent Multiple XSS in admin.php
+	[+] Fixed Permanent XSS in edit.php
+	[+] Add Scritto nuovamente il login in zona amministrazione, ora basato sui COOKIE
+	[+] Add Inserito la visualizzazione del numero di source inseriti
+	[+] Fixed Sistemati i problemi relativi alla visualizzazione del titolo e dell'authore (scusare errore di distrazione mio asd)
+	[+] Sezione amministrativa migrata nella directory /admin
+	[+] Ripulito un pò il codice :P
+	[+] inserito opzione Logout per uscire e cancellare i cookie dell'amministrazione ;)
+	
+v1.1b (Prima release Publicata)
+	[+] Fixed SQL Injection in edit.php and admin.php
+	[+] Fixed small errors in all pages
+		[+] Fixed Editing mode in edit.php (Thanks FL3` )
+	[+] Fixed SQL Injection in edit.php (Parametro ID)
+	[+] Migliorato il passaggio dell'ID tra le pagine di amministrazione.
+	[+] Fixed Problema in admin.php, non stampava il linguaggio del codice e provocava vari problemi
+	[+] Inserire un pò di grafica Haxoriana asd qualche riga di css e qualche tabella ^_^
+	
+v1.0b (not Publicate)
+	[+] Scritto modulo base per il "paste" dei source
+	[+] Creata pagina edit.php per editare e delettare i sources (thanks to LostPassword_ )
+	[+] Creata pagina admin.php dove è possibile avere una lista di tutti i paste inseriti e possibilità di delettare e editare uno ad uno tramite pagina edit.php
