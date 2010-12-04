@@ -19,7 +19,7 @@ if(!defined("__INSTALLED__"))
 
 class Core extends Security {
 	
-	const VERSION = '2.0 - Beta';
+	const VERSION = '2.0.1';
 
 	public function __construct () {
 	
@@ -211,7 +211,7 @@ class Core extends Security {
 			. "\n</li>"
 			. "\n<li class=\"top\"><a href=\"admin.php?action=updates\" target=\"_self\" class=\"top_link\"><span>Upgrade</span></a>"
 			. "\n</li>"
-			. "\n<li class=\"top\"><a href=\"admin.php?action=logout\" target=\"_self\" class=\"top_link\"><span>Logout</span></a>"
+			. "\n<li class=\"top\"><a href=\"admin.php?action=logout&security=".$_SESSION['token']."\" target=\"_self\" class=\"top_link\"><span>Logout</span></a>"
 			. "\n</li>"
 			. "\n</ul>"
 			. "\n</div>"
@@ -409,16 +409,16 @@ class Core extends Security {
 		
 			if (!in_array ($this->langs['language'], $language)) {
 			
-				print "\nSources for the language: <b>".$this->langs['language']."</b>\n<br />\n";
+				print "\nSources for the language: <b>".htmlspecialchars($this->langs['language'])."</b>\n<br />\n";
 			
-				$this->pastes = $this->sql->sendQuery("SELECT * FROM `".__PREFIX__."pastes` WHERE language = '".$this->langs['language']."'");
+				$this->pastes = $this->sql->sendQuery("SELECT * FROM `".__PREFIX__."pastes` WHERE language = '".mysql_real_escape_string($this->langs['language'])."'");
 				
 				print "\n<ul>";
 				
 				while ($this->paste = mysql_fetch_array($this->pastes))
-					print "<li>\n<a href=\"view.php?id=".$this->paste['id']."\" target=\"_blank\">".$this->paste['title']."</a>\n</li><br />";
+					print "\n<li>\n<a href=\"view.php?id=".$this->paste['id']."\" target=\"_blank\">".htmlspecialchars($this->paste['title'])."</a>\n</li>\n<br />";
 			}
-			print "</ul>";
+			print "\n</ul>\n";
 			$language[] = $this->langs['language'];
 		}
 		$this->PrintFooter();

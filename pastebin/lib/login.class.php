@@ -61,6 +61,8 @@ class Login extends Security {
 	
 	public function logout($pass) {
 		
+		$this->security_token($_GET['security'], $_SESSION['token']);
+		
 		$this->password = $this->VarProtect($pass);		
 		
 		if($this->is_admin($this->password) == TRUE) {

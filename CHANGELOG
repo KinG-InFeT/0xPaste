@@ -1,5 +1,10 @@
 							_ CHANGELOG _
 							
+v2.0.1
+	[+] Fix minor XSS Bugs in core.class.php (view.php?mode=all)
+	[+] Fix Small SQL Injection in core.class.php (view.php?mode=all)
+	[+] Fix CSRF in logout function (login.class.php)
+							
 v2.0 - Beta (First OOP Released)
 	[+] Tutta la configurazione passata in MySQL
 	[+] Installazione completamente rinnovata e semplificata
