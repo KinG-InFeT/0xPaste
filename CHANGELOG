@@ -1,5 +1,8 @@
 							_ CHANGELOG _
-							
+v2.0.2
+	[+] Fix compatibilità con le precedenti versioni di 0xPaste per quanto riguarda i link per il view dei sources
+	[+]	Fix HTML view (Thanks BlackC0de)
+
 v2.0.1
 	[+] Fix minor XSS Bugs in core.class.php (view.php?mode=all)
 	[+] Fix Small SQL Injection in core.class.php (view.php?mode=all)

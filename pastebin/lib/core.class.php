@@ -19,7 +19,7 @@ if(!defined("__INSTALLED__"))
 
 class Core extends Security {
 	
-	const VERSION = '2.0.1';
+	const VERSION = '2.0.2';
 
 	public function __construct () {
 	
@@ -337,7 +337,7 @@ class Core extends Security {
 		
 		$this->PrintHeader();
 		
-		print $geshi->parse_code();
+		print "<br />\n".$geshi->parse_code();
 		
 		$this->PrintFooter();
 	}
