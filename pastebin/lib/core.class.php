@@ -19,7 +19,7 @@ if(!defined("__INSTALLED__"))
 
 class Core extends Security {
 	
-	const VERSION = '2.0.2';
+	const VERSION = '2.1.0';
 
 	public function __construct () {
 	
@@ -254,7 +254,7 @@ class Core extends Security {
 		$this->author = $this->VarProtect( $author );
 		$this->lang   = $this->VarProtect( $lang   );
 		
-		$this->text   = mysql_real_escape_string( $code );		
+		$this->text   = mysql_real_escape_string( stripslashes( $code ));
 		
 		//vari dati
 		$this->date   = @date("d/m/y");

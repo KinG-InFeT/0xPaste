@@ -1,4 +1,10 @@
 							_ CHANGELOG _
+
+v2.1.0 (Stable Release)
+	[+] Fix slash in inserit() and edit_paste() and themes() functions (sorry :( )
+	[+] Fixed minors Bugs in installation for compatibility with hellospace hosting
+	[+] Change style.css :P
+
 v2.0.2
 	[+] Fix compatibilità con le precedenti versioni di 0xPaste per quanto riguarda i link per il view dei sources
 	[+]	Fix HTML view (Thanks BlackC0de)

@@ -12,13 +12,13 @@
  
 /* CSS CMS 0xPaste */
 body {
-	background-color: #666666;
+	background-color: #000000;
 	color: white;
 	font-family: monospace;
 }
 
 a {
-	color: black;
+	color: gray;
 	text-decoration: none;
 }
 

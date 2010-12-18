@@ -169,7 +169,7 @@ class Admin extends Security  {
 			$this->security_token($_POST['security'], $_SESSION['token']);
 
 			$scrivi_file = fopen("style.css","w");
-			fwrite($scrivi_file,$_POST['theme_file']) or die("Error writing file style.css");
+			fwrite($scrivi_file,stripslashes($_POST['theme_file'])) or die("Error writing file style.css");
 			fclose($scrivi_file);
 				
 			print "<script>alert(\"Theme Changed!\"); window.location.href = 'admin.php?action=themes';</script>";
@@ -236,7 +236,7 @@ class Admin extends Security  {
 			        $this->title   = $this->VarProtect( $_POST['title']  );
 			        $this->author  = $this->VarProtect( $_POST['author'] );
 			        
-			        $this->code    = mysql_real_escape_string( $_POST['code'] );			        
+			        $this->code    = mysql_real_escape_string( stripslashes( stripslashes($_POST['code'] )));
 			
 			        $this->sql->sendQuery("UPDATE ".__PREFIX__."pastes SET title = '".$this->title."', author = '".$this->author."', data = '".$this->data."', text = '".$this->code."' WHERE id = '".$this->id."'");
 			
