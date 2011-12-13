@@ -1,5 +1,10 @@
 							_ CHANGELOG _
 
+v2.1.1
+    [+] Change all links of hellospace.net
+    [+] Upgrade Geshi to 1.0.8.10 version
+    [+] Minor bug fixed
+
 v2.1.0 (Stable Release)
 	[+] Fix slash in inserit() and edit_paste() and themes() functions (sorry :( )
 	[+] Fixed minors Bugs in installation for compatibility with hellospace hosting

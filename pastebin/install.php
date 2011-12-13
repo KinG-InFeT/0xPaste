@@ -7,7 +7,7 @@
  *
  * @file install.php
  *
- * @link http://0xproject.hellospace.net#0xPaste
+ * @link http://0xproject.netsons.org#0xPaste
  *
  */
  
@@ -142,7 +142,7 @@ if (   !empty( $_POST['password'] )
 	  `id` int(11) NOT NULL auto_increment,
 	  `password` text NOT NULL,
 	  KEY `id` (`id`)
-	) TYPE=MyISAM AUTO_INCREMENT=1 ;") or die(mysql_error());
+	);") or die(mysql_error());
 	
 	echo "Table <b>'".$prefix."users'</b> created with success<br />\n";
 	
@@ -152,7 +152,7 @@ if (   !empty( $_POST['password'] )
 	mysql_query("CREATE TABLE `".$prefix."config` (
 	  `title` text NOT NULL,
 	  `view_all` INT NOT NULL
-	) TYPE=MyISAM;") or die(mysql_error());
+	);") or die(mysql_error());
 	
 	echo "Table <b>'".$prefix."config'</b> created with success<br />\n";
 	
@@ -169,7 +169,7 @@ if (   !empty( $_POST['password'] )
 	  `language` mediumtext NOT NULL,
 	  `text` longtext NOT NULL,
 	  `data` text NOT NULL
-	) TYPE=MyISAM;") or die(mysql_error());
+	);") or die(mysql_error());
 	
 		echo "Table <b>'".$prefix."pastes'</b> created with success<br />\n";
 	
@@ -183,7 +183,7 @@ if (   !empty( $_POST['password'] )
  *
  * @file config.php
  *
- * @link http://0xproject.hellospace.net#0xPaste
+ * @link http://0xproject.netsons.org#0xPaste
  *
  */
 @define("__INSTALLED__", 1);
@@ -269,6 +269,6 @@ $db_name = "'.$name.'";
 ?>
 <br />
 <br />
-<div align="center"><font color="grey"><i>Powered By <a href="http://0xproject.hellospace.net/#0xPaste">0xPaste</a></i></font></div>
+<div align="center"><font color="grey"><i>Powered By <a href="http://0xproject.netsons.org/#0xPaste">0xPaste</a></i></font></div>
 </body>
 </html>

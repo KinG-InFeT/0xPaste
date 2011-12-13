@@ -7,7 +7,7 @@
  *
  * @file admin.class.php
  *
- * @link http://0xproject.hellospace.net#0xPaste
+ * @link http://0xproject.netsons.org#0xPaste
  *
  */
  
@@ -126,9 +126,9 @@ class Admin extends Security  {
 		
 		$update = NULL;
 		
-		if ($fsock = @fsockopen('www.0xproject.hellospace.net', 80, $errno, $errstr, 10)) {
+		if ($fsock = @fsockopen('www.0xproject.netsons.org', 80, $errno, $errstr, 10)) {
 			@fputs($fsock, "GET /versions/0xPaste.txt HTTP/1.1\r\n");
-			@fputs($fsock, "HOST: www.0xproject.hellospace.net\r\n");
+			@fputs($fsock, "HOST: www.0xproject.netsons.org\r\n");
 			@fputs($fsock, "Connection: close\r\n\r\n");
 	
 			$get_info = FALSE;
@@ -149,7 +149,7 @@ class Admin extends Security  {
 				$version_info = "<p style=\"color:green\">There are no updates for your system.</p><br />";
 			else
 				$version_info = "\n<p style=\"color:red\">Updates are available for the system.<br />\nUpgrade to the latest version:". $update."\n"
-							  . "<br /><br />Link Download: <a href=\"http://0xproject.hellospace.net/#0xPaste\">Download Recent Version</a><br /></p>\n";
+							  . "<br /><br />Link Download: <a href=\"http://0xproject.netsons.org/#0xPaste\">Download Recent Version</a><br /></p>\n";
 		}else{
 			if ($errstr)
 				$version_info = '<p style="color:red">' . sprintf("Unable to open connection to 0xProject Server, reported error is:<br />%s", $errstr) . '</p>';

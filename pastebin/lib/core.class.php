@@ -7,7 +7,7 @@
  *
  * @file core.class.php
  *
- * @link http://0xproject.hellospace.net#0xPaste
+ * @link http://0xproject.netsons.org#0xPaste
  *
  */
 
@@ -19,7 +19,7 @@ if(!defined("__INSTALLED__"))
 
 class Core extends Security {
 	
-	const VERSION = '2.1.0';
+	const VERSION = '2.1.1';
 
 	public function __construct () {
 	
@@ -49,28 +49,14 @@ class Core extends Security {
 	 * Thanks Stoner (sPaste)
 	 */
 	private function GetLang() {
-		$langList = array(			
+		$langList = array(	
+				
 			//default language PHP, C, C++, Python, Perl, Bash, SQL, Text, CSS, HTML
-			"php" => "PHP", "perl" => "Perl", "sql" => "SQL", "python" => "Python", "c" => "C", "cpp" => "C++", "html4strict" => "HTML",
+			
+			"php" => "PHP", "perl" => "Perl", "sql" => "SQL", "python" => "Python", "c" => "C", "cpp" => "C++", "html5" => "HTML 5",
 			"css" => "CSS", "text" => "Text",
 			
-			//The end default language
-			
-			//upgrade Geshi 1.0.8.9
-			"4cs" => "GADV 4CS", "6502acme" => "MOS 6502 (6510) ACME Cross Assembler format", "6502kickass" => "MOS 6502 (6510) Kick Assembler format",
-			"6502tasm" => "MOS 6502 (6510) TASM/64TASS 1.46 Assembler format", "68000devpac" => "Motorola 68000 - HiSoft Devpac ST 2 Assembler format",
-			"autoconf" => "Autoconf", "autohotkey" => "Autohotkey", "awk" => "Awk", "bibtex" => "BibTex", "chaiscript" => "Chaiscript",
-			"clojure" => "Clojure", "cmake" => "Cmake", "cuesheet" => "Cuesheet", "d" => "D", "e" => "E", "ecmascript" => "ECMAScript",
-			"f1" => "Formula One", "fo" => "FO (abas-ERP)", "gambas" => "GAMBAS", "gdb" => "GDB", "genie" => "Genie", "go" => "Go",
-			"gwbasic" => "GwBasic", "hicest" => "HicEst", "icon" => "Icon", "j" => "J", "jquery" => "jGuery", "lb" => "Liberty BASIC",
-			"logtalk" => "Logtalk", "magiksf" => "MagikSF", "mapbasic" => "MapBasic", "mmix" => "MMIX", "modula2" => "Modula-2",
-			"newlisp" => "newlisp", "objeck" => "Objeck Programming Language", "oxygene" => "Oxygene (Delphi Prism)", "oz" => "OZ",
-			"pcre" => "PCRE", "perl6" => "Perl 6", "pf" => "OpenBSD Packet Filter", "pike" => "Pike", "powerbuilder" => "PowerBuilder",
-			"properties" => "PROPERTIES", "purebasic" => "Purebasic", "q" => "q/kdb+", "rpmspec" => "RPM Specification File",
-			"rsplus" => "R / S+", "unicon" => "Unicon (Unified Extended Dialect of Icon)", "vala" => "Vala", "xbasic" => "xBasic",
-			"zxbasic" => "ZXBasic", "systemverilog" => "SystemVerilog", "postgresql" => "PostgreSQL", "fsharp" => "F#", "email" => "eMail (mbox)",
-			"algol68" => "ALGOL 68", "erlang" => "Erlang",
-			//The end upgrade Geshi 1.0.8.9
+			//The end default language	
 			
 			//start language of geshi 1.0.8.3
 			"abap" => "ABAP" , "actionscript" => "ActionScript", "actionscript3"=> "ActionScript 3", "ada"=> "Ada",
@@ -95,8 +81,31 @@ class Core extends Security {
 			"thinbasic"=> "thinBasic", "tsql"=> "T-SQL", "typoscript"=> "TypoScript", "vb"=> "Visual Basic", "vbnet"=> "Visual Basic .NET",
 			"verilog"=> "Verilog", "vhdl"=> "VHDL", "vim"=> "Vim Script", "visualfoxpro"=> "Visual Fox Pro", "visualprolog"=> "Visual Prolog",
 			"whitespace"=> "Whitespace", "whois"=> "Whois Response", "winbatch"=> "Winbatch", "xml"=> "XML", "xorg_conf" => "Xorg configuration",
-			"xpp" => "X++", "z80" => "ZiLOG Z80 Assembler", "locobasic" => "Loco Basic", "lsl2" => "LSL 2", "oberon2" => "Oberon"
+			"xpp" => "X++", "z80" => "ZiLOG Z80 Assembler", "locobasic" => "Loco Basic", "lsl2" => "LSL 2", "oberon2" => "Oberon",
 			//the end geshi language 1.0.8.3
+			
+			//upgrade Geshi 1.0.8.9
+			"4cs" => "GADV 4CS", "6502acme" => "MOS 6502 (6510) ACME Cross Assembler format", "6502kickass" => "MOS 6502 (6510) Kick Assembler format",
+			"6502tasm" => "MOS 6502 (6510) TASM/64TASS 1.46 Assembler format", "68000devpac" => "Motorola 68000 - HiSoft Devpac ST 2 Assembler format",
+			"autoconf" => "Autoconf", "autohotkey" => "Autohotkey", "awk" => "Awk", "bibtex" => "BibTex", "chaiscript" => "Chaiscript",
+			"clojure" => "Clojure", "cmake" => "Cmake", "cuesheet" => "Cuesheet", "d" => "D", "e" => "E", "ecmascript" => "ECMAScript",
+			"f1" => "Formula One", "fo" => "FO (abas-ERP)", "gambas" => "GAMBAS", "gdb" => "GDB", "genie" => "Genie", "go" => "Go",
+			"gwbasic" => "GwBasic", "hicest" => "HicEst", "icon" => "Icon", "j" => "J", "jquery" => "jGuery", "lb" => "Liberty BASIC",
+			"logtalk" => "Logtalk", "magiksf" => "MagikSF", "mapbasic" => "MapBasic", "mmix" => "MMIX", "modula2" => "Modula-2",
+			"newlisp" => "newlisp", "objeck" => "Objeck Programming Language", "oxygene" => "Oxygene (Delphi Prism)", "oz" => "OZ",
+			"pcre" => "PCRE", "perl6" => "Perl 6", "pf" => "OpenBSD Packet Filter", "pike" => "Pike", "powerbuilder" => "PowerBuilder",
+			"properties" => "PROPERTIES", "purebasic" => "Purebasic", "q" => "q/kdb+", "rpmspec" => "RPM Specification File",
+			"rsplus" => "R / S+", "unicon" => "Unicon (Unified Extended Dialect of Icon)", "vala" => "Vala", "xbasic" => "xBasic",
+			"zxbasic" => "ZXBasic", "systemverilog" => "SystemVerilog", "postgresql" => "PostgreSQL", "fsharp" => "F#", "email" => "eMail (mbox)",
+			"algol68" => "ALGOL 68", "erlang" => "Erlang",
+			//The end upgrade Geshi 1.0.8.9
+			
+			
+			//Upgrade Geshi 1.0.8.10
+			"c_loadrunner" => "C (for LoadRunner)", "epc" => "Enerscript", "falcon" => "Falcon", "llvm" => "LLVM", "pli" => "PL/I", "proftpd" => "ProFTPd", 
+			"pycon" => "Python (console mode)", "uscript" => "Unreal Script", "bascomavr" => "BASCOM AVR", "coffeescript" => "CoffeeScript",
+			"euphoria" => "Euphoria", "html4strict" => "HTML4", "yaml" => "YAML"
+			//The end upgrade Geshi 1.0.8.10
 		);
 		
 		$d = opendir("lib/geshi/geshi/");
@@ -120,7 +129,7 @@ class Core extends Security {
 					. "\n\t<option value=\"bash\">Bash</option>"
 					. "\n\t<option value=\"sql\">SQL</option>"
 					. "\n\t<option value=\"python\">Python</option>"
-					. "\n\t<option value=\"html4strict\">HTML</option>"
+					. "\n\t<option value=\"html5\">HTML</option>"
 					. "\n\t<option value=\"error\">--------------------------</option>";
 								
 			//ksort($aLang);
@@ -225,7 +234,7 @@ class Core extends Security {
 		$this->sources = mysql_num_rows($this->sql->sendQuery("SELECT * FROM ".__PREFIX__."pastes"));
 		
 		print "\n<br /><br />"
-			. "\n<p style=\"float: left;\"><i>Powered By <a href=\"http://0xproject.hellospace.net/#0xPaste\">0xPaste</a> v".Core::VERSION."</p></i>\n"
+			. "\n<p style=\"float: left;\"><i>Powered By <a href=\"http://0xproject.netsons.org/#0xPaste\">0xPaste</a> v".Core::VERSION."</p></i>\n"
 			. "\n<p style=\"float: right;\">Sources in Database: ".$this->sources."</p>\n"
 			. $this->footer_link
 			. "\n</body>"
