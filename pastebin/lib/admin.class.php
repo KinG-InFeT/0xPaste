@@ -25,6 +25,9 @@ class Admin extends Security  {
 		
 		print "<h3 align=\"center\">List of Pastes</h3>\n";	
 		
+        //Elimino tutti i sorgenti che hanno una durata inferiore a time();
+	    $this->sql->sendQuery("DELETE FROM ".__PREFIX__."pastes WHERE expire_date > 0 AND expire_date < " . time());
+		
 		print "\n<table style=\"border-collapse: collapse;\" border=\"2\" align=\"center\" cellpadding=\"10\" cellspacing=\"1\">"
 			. "\n<tbody>"
 			. "\n	<tr align=\"center\">"
@@ -144,12 +147,15 @@ class Admin extends Security  {
 			@fclose($fsock);
 			
 			$update = htmlspecialchars($update);
+			
+			$update1  = str_replace(".", "", $update);
+			$version1 = str_replace(".", "", $version);
 	
-			if ($version == $update)
+			if ($version1 >= $update1)
 				$version_info = "<p style=\"color:green\">There are no updates for your system.</p><br />";
 			else
-				$version_info = "\n<p style=\"color:red\">Updates are available for the system.<br />\nUpgrade to the latest version:". $update."\n"
-							  . "<br /><br />Link Download: <a href=\"http://0xproject.netsons.org/#0xPaste\">Download Recent Version</a><br /></p>\n";
+				$version_info = "\n<p style=\"color:red\">Updates are available for the system.<br />\nUpgrade to the latest version: ". $update."\n"
+							  . "<br /><br />Link Download: <a href=\"http://0xproject.netsons.org/#0xPaste\">Download Recent Version</a><br />\n";
 		}else{
 			if ($errstr)
 				$version_info = '<p style="color:red">' . sprintf("Unable to open connection to 0xProject Server, reported error is:<br />%s", $errstr) . '</p>';
@@ -182,10 +188,11 @@ class Admin extends Security  {
 			fclose($leggi_file);
 
 			print "\n<form method=\"POST\" action=\"admin.php?action=themes\" />"
-				. "\n<p align=\"center\">Edit Themes File:<br />"
+				. "\n<p align=\"center\">Edit Themes File<br />"
 				. "\n<textarea name=\"theme_file\" rows=\"25\" cols=\"160\">".htmlspecialchars($this->theme)."</textarea><br />"
 				. "\n<input type=\"hidden\" name=\"security\" value=\"".$_SESSION['token']."\" />"
 				. "\n<input type=\"hidden\" name=\"send\" value=\"1\" />"
+				. "\n<br />"
 				. "\n<input type=\"submit\" value=\"Edit Theme\" /></p>"
 				. "\n</form>"
 				. "";
@@ -203,7 +210,7 @@ class Admin extends Security  {
 			print "<script>alert('Password Changed'); location.href = 'admin.php?action=change_pass_admin';</script>";
 		}else{
 			print "\n<form method = \"POST\" action=\"admin.php?action=change_pass_admin\" />"
-				. "\n<p>New Password: <input type=\"password\" name=\"new_pass\" /><br />"
+				. "\n<p>New Password: <input type=\"password\" name=\"new_pass\" /><br /><br />"
 				. "\n<input type=\"hidden\" name=\"security\" value=\"".$_SESSION['token']."\" />"
 				. "\n<input type=\"submit\" value=\"Edit Password\" />"
 				. "\n</form></p>"

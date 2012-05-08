@@ -81,18 +81,20 @@ class Login extends Security {
 			if(!empty($_POST['pass'])) 
 			{	
 				if($this->send_login($_POST['pass']) == FALSE)
-					die("<div id=\"error\"><b>Error! username or Password does not correct!</b><br /><br />\n<a href=\"admin.php\">Back</a></div>");
+					die("<div id=\"error\">Error! username or Password does not correct!<br /><br />\n<a href=\"admin.php\">Back</a></div>");
 			}else{
 			
-				die(  "\n<fieldset>"
+				die(  "\n<div align=\"center\">"
+				    . "\n<fieldset style=\"width:30%;\">"
 		   			. "\n<legend>Login</legend>"
-					. "\n     <br /><p align=\"center\">"
-					. "\n     <FORM action=\"admin.php\" method=\"POST\">"
+					. "\n     <br />"
+					. "\n     <form action=\"admin.php\" method=\"POST\">"
 					. "\n     Password :"
-					. "\n     <INPUT type=\"password\" name=\"pass\" Style=\"Color: #0044FF; Font-Size: 11\"><br /><br />"
-					. "\n     <INPUT type=\"submit\" value=\"Login\"> </p>"
-					. "\n     </FORM><br />"
-					. "\n </fieldset>");
+					. "\n     <input type=\"password\" name=\"pass\" ><br /><br />"
+					. "\n     <input type=\"submit\" value=\"Login\">"
+					. "\n     </form><br />"
+					. "\n </fieldset>"
+					. "\n</div>");
 			}
 		}
 	}

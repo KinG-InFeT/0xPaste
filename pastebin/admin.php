@@ -19,19 +19,17 @@ include("lib/core.class.php");
 include("lib/admin.class.php");
 include("lib/login.class.php");
 
-$template = new Core();
-$admin    = new Admin();
-$login    = new Login();
+$core  = new Core();
+$admin = new Admin();
+$login = new Login();
 
-@$action = $_GET['action'];
-
-$template->PrintHeader();
+$core->PrintHeader();
 
 $login->form_login(@$_COOKIE['password']);
 
-$template->PrintAdminMenu();
+$core->PrintAdminMenu();
     
-switch($action) {
+switch(@$_GET['action']) {
 
 	case 'edit_paste';
 		$admin->edit_paste(@$_REQUEST['id']);
@@ -66,6 +64,6 @@ switch($action) {
 	break;
 }
 
-$template->PrintFooter();
+$core->PrintFooter();
 ?>
 

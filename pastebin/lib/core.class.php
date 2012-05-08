@@ -19,7 +19,7 @@ if(!defined("__INSTALLED__"))
 
 class Core extends Security {
 	
-	const VERSION = '2.1.1';
+	const VERSION = '2.2.0';
 
 	public function __construct () {
 	
@@ -38,7 +38,7 @@ class Core extends Security {
 		if(mysql_num_rows($this->past) < 1) {
 			$this->Printheader();
 			
-			die("<div id=\"error\"><h2>Source does not exists!</h2></div>");
+			die("<div id=\"error\">Source does not exists!</div>");
 			
 			$this->PrintFooter();
 		}
@@ -152,9 +152,9 @@ class Core extends Security {
 	
 	$this->config = mysql_fetch_array($this->sql->sendQuery("SELECT title FROM `".__PREFIX__."config`"));
 	
-	$this->title = (preg_match("/admin/i",$_SERVER['PHP_SELF'])) ? "Administration - 0xPaste" : $this->config['title'];
+	$this->title = (preg_match("/admin/i", $_SERVER['PHP_SELF'])) ? "Administration - 0xPaste" : $this->config['title'];
 	
-		print "\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">"
+		print "\n<!DOCTYPE html>"
 			. "\n<html xmlns=\"http://www.w3.org/1999/xhtml\">"
 			. "\n<head>"
 			. "\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />"
@@ -178,7 +178,10 @@ class Core extends Security {
 			. "\n</script>"									  
 			. "\n</head>"
 			. "\n<body>"
-			. "\n<h2 align=\"center\">".$this->title."</h2>";
+			. "\n<h2 align=\"center\">".$this->title."</h2><br /><br />";
+			
+			if(preg_match("/(admin|view)/i", $_SERVER['PHP_SELF']) == FALSE)
+    			print "\n<h3 align=\"center\"><a href=\"?set_mode=1\">[ Terminal Mode ]</a></h3>";
 	}	
 	public function PrintBody() {
 	
@@ -190,12 +193,25 @@ class Core extends Security {
 			. "\n<tr>"
 			. "\n<td>"
 			. "\n<form  onSubmit=\"return check();\" method=\"POST\" action=\"index.php?action=paste\">"
-			. "\nTitle:<br /><input type=\"text\" name=\"title\"><br /><br />"
+			. "\nPaste Name/Title:<br /><input type=\"text\" name=\"title\"><br /><br />"
 			. "\nAuthor:<br /><input type=\"text\" name=\"author\"><br /><br />"
-			. "\nLanguage:<br />"
+			. "\nSyntax Highlighting:<br />"
 			. "\n".$this->lang."\n"
 			. "\n<br /><br />"
-			. "\nCode:<br /><textarea cols=\"100\" rows=\"23\" name=\"code\"></textarea><br /><br />"
+			. "\nCode:<br /><textarea cols=\"100\" rows=\"23\" name=\"normal_code\"></textarea><br /><br />"
+			. "\nPaste Expiration: "
+			. "\n<select name=\"autodelete\" value=\"1\" />"
+			. "\n<option value=\"never\" selected=\"selected\">Never</option>"
+			. "\n<option value=\"10m\">10 Minutes</option>"
+			. "\n<option value=\"30m\">30 Minutes</option>"
+			. "\n<option value=\"1h\">1 Hour</option>"
+			. "\n<option value=\"12h\">12 Hours</option>"
+			. "\n<option value=\"1d\">1 Day</option>"
+			. "\n<option value=\"1w\">1 Week</option>"
+			. "\n<option value=\"1m\">1 Month</option>"
+			. "\n<option value=\"1y\">1 Year</option>"
+			. "\n</select>"
+			. "\n<br />\n<br />"
 			. "\n<img src=\"lib/captcha.php\"><br />"
 			. "\nCaptcha Code (Case-Sensitive):<br />"
 			. "\n<input name=\"captcha\" type=\"text\" id=\"captcha\"><br /><br />"
@@ -241,7 +257,7 @@ class Core extends Security {
 			. "\n</html>";
 	}
 	
-	public function inserit($title, $author, $lang, $code, $captcha) {
+	public function inserit($title, $author, $lang, $code, $captcha, $expire_date) {
 		
 		if($captcha != $_SESSION['captcha'])
 			die("<script>alert(\"Error! Captcha is NOT correct!\"); window.location=\"index.php\";</script>");
@@ -250,7 +266,7 @@ class Core extends Security {
 			die("<script>alert(\"Error! Title NOT include!\"); window.location=\"index.php\";</script>");
 		
 		if($author == NULL)
-			die("<script>alert(\"Error! Author NOT include!\"); window.location=\"index.php\";</script>");
+			$author = 'Anonymous';
 		
 		if(($lang == NULL) || ($lang == 'error'))
 			die("<script>alert(\"Error! Language unselected!\"); window.location=\"index.php\";</script>");
@@ -270,9 +286,51 @@ class Core extends Security {
 		$this->ip     = $_SERVER['REMOTE_ADDR'];
 		$this->id     = $this->random_id();
 		
-		$this->sql->sendQuery("INSERT INTO `".__PREFIX__."pastes` (`id`, `author`, `title`, `ip`, `language`, `text`, `data`
-								) VALUES (
-							  '".$this->id."', '".$this->author."', '".$this->title."', '".$this->ip."', '".$this->lang."', '".$this->text."',  '".$this->date."');");
+		//ha vita breve?
+		switch($expire_date) {
+		
+            case '10m': 
+                $this->expire = time() + (10 * 60); 
+            break;
+            
+            case '30m': 
+                $this->expire = time() + (30 * 60);
+            break;
+            
+            case '1h': 
+                $this->expire = time() + (60 * 60); 
+            break;
+            
+            case '12h': 
+                $this->expire = time() + (12 * 60 * 60); 
+            break;
+            
+            case '1d': 
+                $this->expire = time() + (24 * 60 * 60); 
+            break;
+            
+            case '1w': 
+                $this->expire = time() + (7 * 24 * 60 * 60); 
+            break;
+            
+            case '1m': 
+                $this->expire = time() + (30 * 24 * 60 * 60); 
+            break;
+            
+            case '1y': 
+                $this->expire = time() + (365 * 24 * 60 * 60); 
+            break;
+            
+            default: 
+                $this->expire = 0; 
+            break;
+        }
+		
+		$this->sql->sendQuery(
+		  "INSERT INTO `".__PREFIX__."pastes` (`id`, `author`, `title`, `ip`, `language`, `text`, `data`, `expire_date`
+			) VALUES (
+    	  '".$this->id."', '".$this->author."', '".$this->title."', '".$this->ip."', '".$this->lang."', '".$this->text."', '".$this->date."', '".$this->expire."');"
+    	);
 
 		$this->PrintHeader();
 		
@@ -283,7 +341,7 @@ class Core extends Security {
 		print "<br /><br /><br /><br />\n<div align=\"center\">"
 			. "\nSource added with success, here's your URL to view:<br />"
 			. "\n<form name=\"code\" />"
-			. "\n<input type=\"text\" size=\"50\" name=\"url\" value=\"".$this->url."/view.php?id=".$this->id."\"><br />"
+			. "\n<input type=\"text\" size=\"50\" name=\"url\" value=\"".$this->url."/view.php?id=".$this->id."\"><br /><br />"
 			. "\n<input type=\"button\" onclick=\"copia('code.url')\" value=\"Select\" name=\"sele\">"
 			. "\n</form><br /><br />"
 			. "\n<a href=\"".$this->url."/view.php?id=".$this->id."\">View Source</a>\n"
@@ -292,12 +350,15 @@ class Core extends Security {
 		$this->PrintFooter();
 	}
 	
-	public function View($ID, $line) {
+	public function View($ID, $line, $lang) {
 	
 		$this->id = intval($ID);
 	
 		if(empty($this->id))
-			die("<div id=\"error\"><h2>ID does not exists!</h2></div>");
+			die("<div id=\"error\">ID not valid!</div>");
+	    
+	    //Elimino tutti i sorgenti che hanno una durata inferiore a time();
+	    $this->sql->sendQuery("DELETE FROM ".__PREFIX__."pastes WHERE expire_date > 0 AND expire_date < " . time());
 	
 		$this->my_is_numeric($this->id);
 		
@@ -318,7 +379,10 @@ class Core extends Security {
 		
 		$this->info = mysql_fetch_array($this->sql->sendQuery("SELECT * FROM `".__PREFIX__."pastes` WHERE id = '".$this->id."' LIMIT 1;"));
 		
-		$geshi = new GeSHi($this->info['text'], $this->info['language']);
+		if(!empty($lang))	
+    		$geshi = new GeSHi($this->info['text'], $lang);
+    	else
+    		$geshi = new GeSHi($this->info['text'], $this->info['language']);
 		
 		$geshi->set_header_type(GESHI_HEADER_PRE_VALID);
 		
@@ -356,7 +420,10 @@ class Core extends Security {
 		$this->id = intval($ID);
 	
 		if(empty($this->id))
-			die("<div id=\"error\"><h2>ID does not exists!</h2></div>");
+			die("<div id=\"error\">ID does not exists!</div>");
+		
+		//Elimino tutti i sorgenti che hanno una durata inferiore a time();
+	    $this->sql->sendQuery("DELETE FROM ".__PREFIX__."pastes WHERE expire_date > 0 AND expire_date < " . time());
 	
 		$this->my_is_numeric($this->id);
 		
@@ -377,7 +444,10 @@ class Core extends Security {
 		$this->id = intval($ID);
 	
 		if(empty($this->id))
-			die("<div id=\"error\"><h2>ID does not exists!</h2></div>");
+			die("<div id=\"error\">ID does not exists!</div>");
+		
+		//Elimino tutti i sorgenti che hanno una durata inferiore a time();
+	    $this->sql->sendQuery("DELETE FROM ".__PREFIX__."pastes WHERE expire_date > 0 AND expire_date < " . time());
 	
 		$this->my_is_numeric($this->id);
 		
@@ -403,12 +473,15 @@ class Core extends Security {
 	
 		$this->PrintHeader();
 		
+		//Elimino tutti i sorgenti che hanno una durata inferiore a time();
+	    $this->sql->sendQuery("DELETE FROM ".__PREFIX__."pastes WHERE expire_date > 0 AND expire_date < " . time());
+	    
 		print "<h3 align=\"center\">List of Pastes</h3>\n";
 		
 		$this->check_view_all = mysql_fetch_array($this->sql->sendQuery("SELECT view_all FROM `".__PREFIX__."config`"));
 		
 		if($this->check_view_all['view_all'] == 0)
-			die("<div id=\"error\"><h2>Sorry, but the section was taken private!</h2></div>");
+			die("<div id=\"error\">Sorry, but the section was taken private!</div>");
 		
 		$language = array();
 		

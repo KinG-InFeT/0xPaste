@@ -29,39 +29,37 @@ a:hover {
 
 
 textarea {
-	background-color:#242424;
-	color:#FFFFFF;
-	border-style: solid;
-	border-color: #4B4B4B;
-	padding:2pt;
+    background-color : #232323;
+    color : #FFFFFF;
+    border-style : solid;
+    border-color : #232323;
+    padding : 2pt;
 }
 
-select {
-	background-color:#242424;
-	color:#FFFFFF;
-	border-style: solid;
-	border-color: #4B4B4B;
+input, textarea, select {
+    background-color : #232323;
+    color : #aaa;
+    border : 1px solid #232323;
 }
 
-input {
-	background-color:#242424;
-	color:#FFFFFF;
-	border: 1px;
-	border-style: solid;
-	border-color: #4B4B4B;
+textarea {
+    border-radius:10px;
+    -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
-input:focus {
-	background-color:#242424;
-	color:#FFFFFF;
-	border: 1px;
-	border-style: solid;
-	border-color: lime;
+input:hover, textarea:hover, select:hover {
+    background-color : #232323;
+    color : #aaa;
 }
 
 table {
 	color: #fff;
-	border:2px dotted #333;
+	border: 1px solid #999;
+    border-radius:10px;
+    -moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 5px;	
 }
 
 tr {
@@ -70,11 +68,11 @@ tr {
 }
 
 #error {
-	width: 50%;
 	color: gray;
 	padding: 12px;
 	border: 1px dotted red;
 	text-align: center;
+	font-size: 30px;
 }
 
 #code_box {

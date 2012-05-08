@@ -144,7 +144,7 @@ if (   !empty( $_POST['password'] )
 	  KEY `id` (`id`)
 	);") or die(mysql_error());
 	
-	echo "Table <b>'".$prefix."users'</b> created with success<br />\n";
+	print "Table <b>'".$prefix."users'</b> created with success<br />\n";
 	
 	mysql_query("INSERT INTO ".$prefix."users (password) VALUES ('".$pass_admin."');") or die(mysql_error());	
 	
@@ -154,11 +154,11 @@ if (   !empty( $_POST['password'] )
 	  `view_all` INT NOT NULL
 	);") or die(mysql_error());
 	
-	echo "Table <b>'".$prefix."config'</b> created with success<br />\n";
+	print "Table <b>'".$prefix."config'</b> created with success<br />\n";
 	
 	mysql_query("INSERT INTO ".$prefix."config (`title`, `view_all`) VALUES ('".$title."', 1);") or die(mysql_error());
 		
-	echo "Table <b>'".$prefix."config'</b> created with success<br />\n";
+	print "Table <b>'".$prefix."config'</b> created with success<br />\n";
 			
 	//tabella PASTES
 	mysql_query("CREATE TABLE `".$prefix."pastes` (
@@ -168,10 +168,11 @@ if (   !empty( $_POST['password'] )
 	  `ip` text NOT NULL,
 	  `language` mediumtext NOT NULL,
 	  `text` longtext NOT NULL,
-	  `data` text NOT NULL
+	  `data` text NOT NULL,
+	  `expire_date` TEXT
 	);") or die(mysql_error());
 	
-		echo "Table <b>'".$prefix."pastes'</b> created with success<br />\n";
+		print "Table <b>'".$prefix."pastes'</b> created with success<br />\n";
 	
 	//creo il file config.php ;)
 	$config = '<?php
@@ -204,10 +205,10 @@ $db_name = "'.$name.'";
 		
 		fclose ($open); // chiudo il file
 
-		echo "<b>config.php</b> created with success<br />\n";
+		print "<b>config.php</b> created with success<br />\n";
 		
-		echo "<font color=green>Installation Complete with Success!</font>"; //stampo l'avvenuto successo di installazione
-		echo '<br><br><a href="?delete_install=1">Delete file install.php</a>';//Consiglio di delettare il file install.php
+		print "<font color=green>Installation Complete with Success!</font>"; //stampo l'avvenuto successo di installazione
+		print '<br><br><a href="?delete_install=1">Delete file install.php</a>';//Consiglio di delettare il file install.php
 }else{
 ?>
 <div align="center">

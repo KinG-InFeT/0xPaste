@@ -13,23 +13,46 @@
 ob_start();
 session_start();
 
-include("lib/core.class.php");
+$_SESSION['terminal_mode'] = (isset($_GET['set_mode'])) ? $_GET['set_mode'] : 0;
 
-$template = new Core();
+if(!empty($_REQUEST['code']) || @$_SESSION['terminal_mode'] == 1 || @$_GET['mode'] == 'terminal') {
 
-if(@$_GET['action'] == 'paste') {
-	$template->inserit($_POST['title'], $_POST['author'], $_POST['lang'], $_POST['code'], $_POST['captcha']);
-	exit;
-}
+    include("lib/terminal.class.php");
+    
+    $terminal = new Terminal();
+    
+    if(@$_GET['list_lang'] == 1)
+        die($terminal->list_lang());
+     
+    
+    if(!empty($_REQUEST['code'])) {
+        $terminal->inserit($_REQUEST['code']);
+        exit;
+    }
+    
+    $terminal->PrintHeader();
+    $terminal->PrintBody();
 
-//patch for compatible 0xPaste old Version
-if((@$_GET['mode'] == 'view') && !empty($_GET['id'])) {
-	header('Location: view.php?id='.$_GET['id']);
-}
+}else{
+
+    include("lib/core.class.php");
+
+
+    $core = new Core();
+
+    if(@$_GET['action'] == 'paste') {
+    	$core->inserit($_POST['title'], $_POST['author'], $_POST['lang'], $_POST['normal_code'], $_POST['captcha'], $_POST['autodelete']);
+    	exit;
+    }
+
+    //patch for compatible 0xPaste old Version
+    if((@$_GET['mode'] == 'view') && !empty($_GET['id'])) {
+    	header('Location: view.php?id='.$_GET['id']);
+    }
 	
-
-$template->PrintHeader();
-$template->PrintBody();
-$template->PrintFooter();
+    $core->PrintHeader();
+    $core->PrintBody();
+    $core->PrintFooter();
+}
 ?>
 

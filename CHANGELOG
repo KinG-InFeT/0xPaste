@@ -1,5 +1,15 @@
 							_ CHANGELOG _
-
+							
+v2.2.0  ![STABLE RELEASE]!
+    [+] Fix check_update() function [HOT]
+    [+] Added cURL mode (simple http://sprunge.us/)
+    [+] Modded the CSS style
+    [+] Aggiunta possibilità di scegliere se il sorgente deve essere eliminato dopo un periodo di tempo (Thanks r0b0t82)
+    [+] Possibilità di inserire un sorgente senza autore
+    [+] Piccoli cambiamenti al login amministrativo
+    [+] Qualche ritocco all'amministrazione da un punto di vista di layout
+    [+] Fix all div error OUT
+    
 v2.1.1
     [+] Change all links of hellospace.net
     [+] Upgrade Geshi to 1.0.8.10 version
