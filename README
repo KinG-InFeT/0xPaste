@@ -2,9 +2,9 @@
 							
 Project 0xPaste is simple CMS for No-Paste, for you sources and more.
 
-Web Site: http://0xproject.netsons.org/#0xPaste
+Web Site: http://www.luongovincenzo.it/0xProject/#0xPaste
 
-Bug-Tracker : http://0xproject.netsons.org/bug_tracker/index.php?project=3&do=index&switch=1
+Bug-Tracker : https://github.com/KinG-InFeT/0xPaste/issues
 
 #Installazione
 1) Uppare tutti i file nel vostro spazio web
@@ -16,6 +16,4 @@ Per fare un upgrade, andare nella cartella UPGRADES e leggete il vostro file di 
 
 Licenza: GPL
 Author: KinG-InFeT
-Web Site: http://www.kinginfet.net/
-
-Powered By KinG-InFeT
+Web Site: http://www.luongovincenzo.it/
